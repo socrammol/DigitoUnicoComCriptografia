@@ -25,10 +25,7 @@ public class SwaggerConfig {
 	@Bean
 	public Docket api() {
 		return new Docket(DocumentationType.SWAGGER_2).select()
-//				.apis(RequestHandlerSelectors.basePackage("br.com.banco.inter.")).paths(PathSelectors.ant("/*")).build()
-//				.useDefaultResponseMessages(false).globalResponseMessage(RequestMethod.GET, responseMessageForGET())
-//				.apiInfo(apiInfo());
-		          .apis(RequestHandlerSelectors.any())
+		          .apis(RequestHandlerSelectors.basePackage("br.com.banco"))
 		          .paths(PathSelectors.any())
 		          .build()
 				  .useDefaultResponseMessages(false)
