@@ -1,10 +1,10 @@
-package br.com.teste.Teste.Banco.Inter;
+package br.com.banco.inter;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class TesteBancoInterApplicationTests {
+class BancoInterApplicationTests {
 
 	@Test
 	void contextLoads() {

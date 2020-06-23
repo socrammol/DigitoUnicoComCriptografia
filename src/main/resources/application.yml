@@ -1,1 +1,13 @@
-
+spring:
+  datasource:
+    driver-class: org.h2.Driver
+    password: ''
+    url: jdbc:h2:file:~/inter
+    username: sa
+  h2:
+    console:
+      enable: true
+      path: /h2
+  jpa:
+    hibernate:
+      ddl-auto: create
