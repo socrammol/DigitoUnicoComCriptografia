@@ -17,10 +17,17 @@ public class DigitoUnicoService {
 	DigitoUnicoRepository digitoUnicoRepository;
 	@Autowired
 	UsuarioService usuarioService;
+	@Autowired
+	CachedService cachedService;
 
 	public DigitoUnicoDTO calcularDigitoUnico(DigitoUnicoDTO digito) {
 		if (digito.getMultiplicador() < 1) {
 			throw new ObjectNotFoundException("multiplicador invalido");
+		}
+		DigitoUnico digitoUnico = new DigitoUnico();
+		digito = cachedService.buscaCache(digito);
+		if(digito.getResultado() > 0) {
+			return digito;
 		}
 		List<Integer> soma = new ArrayList<>();
 		StringBuilder builder = new StringBuilder();
@@ -32,14 +39,14 @@ public class DigitoUnicoService {
 		builder.delete(0, builder.length());
 		int resultado = soma(soma, builder);
 		digito.setResultado(resultado);
-		if(digito.getIdUsuario()>0) {
+		if(digito.getIdUsuario() != null) {
 			usuarioService.buscaUsuario(digito.getIdUsuario());
-			DigitoUnico digitoUnico = new DigitoUnico();
 			digitoUnico.setInteiro(digito.getInteiro());
 			digitoUnico.setMultiplicador(digito.getMultiplicador());
 			digitoUnico.setResultado(digito.getResultado());
 			digitoUnicoRepository.save(digitoUnico);
 		}
+		cachedService.adiciona(digito);
 		return digito;
 	}
 
