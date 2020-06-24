@@ -25,6 +25,7 @@ public class DigitoUnicoService {
 			throw new ObjectNotFoundException("multiplicador invalido");
 		}
 		DigitoUnico digitoUnico = new DigitoUnico();
+		digito.setInteiro(verificaSeTemLetra(digito.getInteiro()));
 		digito = cachedService.buscaCache(digito);
 		if(digito.getResultado() > 0) {
 			return digito;
@@ -40,7 +41,7 @@ public class DigitoUnicoService {
 		int resultado = soma(soma, builder);
 		digito.setResultado(resultado);
 		if(digito.getIdUsuario() != null) {
-			usuarioService.buscaUsuario(digito.getIdUsuario());
+			digitoUnico.setUsuario(usuarioService.buscaUsuario(digito.getIdUsuario()));
 			digitoUnico.setInteiro(digito.getInteiro());
 			digitoUnico.setMultiplicador(digito.getMultiplicador());
 			digitoUnico.setResultado(digito.getResultado());
@@ -48,6 +49,11 @@ public class DigitoUnicoService {
 		}
 		cachedService.adiciona(digito);
 		return digito;
+	}
+
+	private String verificaSeTemLetra(String inteiro) {
+		
+		return inteiro.replaceAll("[^0-9]", "");
 	}
 
 	private int soma(List<Integer> numeros, StringBuilder builder) {

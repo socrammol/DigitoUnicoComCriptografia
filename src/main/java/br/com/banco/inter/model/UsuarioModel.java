@@ -1,9 +1,17 @@
 package br.com.banco.inter.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class UsuarioModel {
@@ -17,17 +25,17 @@ public class UsuarioModel {
 	private Long id;
 	private String nome;
 	private String email;
-//	@ManyToOne
-//	private List<DigitoUnico> digitos = new ArrayList<>();
+	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+	private List<DigitoUnico> digitos = new ArrayList<>();
 
 	public UsuarioModel() {
 	}
 
-	public UsuarioModel(Long id, String nome, String email) {
+	public UsuarioModel(Long id, String nome, String email, List<DigitoUnico> digitos) {
 		this.id = id;
 		this.nome = nome;
 		this.email = email;
-		//this.digitos = digitos;
+		this.digitos = digitos;
 	}
 
 	public Long getId() {
@@ -53,19 +61,13 @@ public class UsuarioModel {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-//
-//	public List<DigitoUnico> getDigitos() {
-//		return digitos;
-//	}
-//
-//	public void setDigitos(List<DigitoUnico> digitos) {
-//		this.digitos = digitos;
-//	}
 
-	@Override
-	public String toString() {
-		return "Usuario [id=" + id + ", nome=" + nome + ", email=" + email +  "]";
+	public List<DigitoUnico> getDigitos() {
+		return digitos;
 	}
-	
+
+	public void setDigitos(List<DigitoUnico> digitos) {
+		this.digitos = digitos;
+	}
 
 }

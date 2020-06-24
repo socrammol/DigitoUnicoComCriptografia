@@ -6,9 +6,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-public class DigitoUnico implements Serializable  {
+public class DigitoUnico implements Serializable {
 	/**
 	 * 
 	 */
@@ -19,12 +23,16 @@ public class DigitoUnico implements Serializable  {
 	private String inteiro;
 	private int multiplicador;
 	private int resultado;
+	@JsonIgnore
+	@ManyToOne
+	private UsuarioModel usuario;
 
-	public DigitoUnico(Long id, String inteiro, int multiplicador, int resultado) {
+	public DigitoUnico(Long id, String inteiro, int multiplicador, int resultado, UsuarioModel usuario) {
 		this.id = id;
-		this.inteiro = inteiro;
+		this.inteiro = inteiro.replaceAll("[^0-9]", "");
 		this.multiplicador = multiplicador;
 		this.resultado = resultado;
+		this.usuario = usuario;
 	}
 
 	public DigitoUnico() {
@@ -62,10 +70,16 @@ public class DigitoUnico implements Serializable  {
 		this.resultado = resultado;
 	}
 
-	@Override
-	public String toString() {
-		return "digitoUnico [id=" + id + ", inteiro=" + inteiro + ", multiplicador=" + multiplicador + ", resultado="
-				+ resultado + "]";
+	public UsuarioModel getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(UsuarioModel usuario) {
+		this.usuario = usuario;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 }

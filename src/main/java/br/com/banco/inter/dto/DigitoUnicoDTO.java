@@ -10,7 +10,7 @@ public class DigitoUnicoDTO {
 	}
 
 	public DigitoUnicoDTO(String inteiro, int multiplicador, Long idUsuario, int resultado) {
-		this.inteiro = inteiro;
+		this.inteiro = inteiro.replaceAll("[^0-9]", "");
 		this.multiplicador = multiplicador;
 		this.idUsuario = idUsuario;
 		this.resultado = resultado;

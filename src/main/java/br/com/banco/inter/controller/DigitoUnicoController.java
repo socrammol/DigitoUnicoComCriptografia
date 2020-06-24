@@ -19,7 +19,6 @@ public class DigitoUnicoController {
 	
 	@PostMapping(path = "/calcular")
 	public DigitoUnicoDTO calcularDigitoUnico(@RequestBody DigitoUnicoDTO digito) {
-		//digitoUnicoService.verificaCache(digito);
 		return digitoUnicoService.calcularDigitoUnico(digito);
 	}
 
