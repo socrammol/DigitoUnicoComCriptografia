@@ -1,6 +1,5 @@
 package br.com.banco.inter.dto;
 
-import io.swagger.annotations.ApiModelProperty;
 
 public class UsuarioDTO {
 	private String nome;
