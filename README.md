@@ -9,7 +9,10 @@
 #### Portas das Apis no Back-end
 - ###### Api de Digito Unico - 8080 (teste-banco-inter)
 #### Como rodar a aplicação
-##### Pode se rodar a aplicação direto da sua ide, pode-se rodala pelo .jar, ou direto com maven
+###### Acesse a raiz do projeto 
+1. pode-se executar o comando mvn spring-boot:run que sera executado o projeto 
+2. Ou mvn install para gerar um .jar que ficara disponivel na pasta target, sendo assim pode-se executar o comando java -jar target/BancoInter-0.0.1-SNAPSHOT.jar
+3. Ou direto de sua ide
 #### O json do postam se encontra na raiz do projeto
 #### para acessar a documentação  
 ##### Foi ultilizado o OpenApi 1.3.9 , mas existe uma arquivo de configuração para o swagger puro caso queira futuramente efetuar a troca
