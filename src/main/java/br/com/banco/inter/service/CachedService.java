@@ -31,12 +31,13 @@ public class CachedService {
 
 	public DigitoUnicoDTO buscaCache(DigitoUnicoDTO digito) {
 		for (DigitoUnicoDTO digitoUnicoDTO : CacheDigito) {
-			if (digito.getInteiro().equals(digitoUnicoDTO.getInteiro())) {
-				if (digito.getMultiplicador() == digitoUnicoDTO.getMultiplicador()) {
-					return digitoUnicoDTO;
-				}
+			if (digito.getInteiro().equals(digitoUnicoDTO.getInteiro())
+					&& digito.getMultiplicador() == digitoUnicoDTO.getMultiplicador()
+					&& digito.getIdUsuario() == null || digito.getInteiro().equals(digitoUnicoDTO.getInteiro())
+					&& digito.getMultiplicador() == digitoUnicoDTO.getMultiplicador()
+					&& digito.getIdUsuario() != null && digito.getIdUsuario() == digitoUnicoDTO.getIdUsuario()) {
+				return digitoUnicoDTO;
 			}
-
 		}
 		return digito;
 	}
