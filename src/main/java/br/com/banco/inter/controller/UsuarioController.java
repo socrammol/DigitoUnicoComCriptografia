@@ -6,6 +6,8 @@ import br.com.banco.inter.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/usuario")
 public class UsuarioController {
@@ -14,7 +16,7 @@ public class UsuarioController {
 	UsuarioService usarioSerive;
 	//criação
 	@PostMapping(path = "/criar")
-	private UsuarioModel publi(@RequestBody UsuarioDTO criarUsuario) {
+	private UsuarioModel publi(@Valid @RequestBody UsuarioDTO criarUsuario) {
 		return usarioSerive.criarUsuario(criarUsuario);
 	}
 	//busca

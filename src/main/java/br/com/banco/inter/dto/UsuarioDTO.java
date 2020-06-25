@@ -1,16 +1,31 @@
 package br.com.banco.inter.dto;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 
 public class UsuarioDTO {
+	@NotBlank(message = "{name.not.blank}")
 	private String nome;
+	@NotBlank(message = "{email.not.blank}")
+	@Email(message = "{email.not.valid}")
 	private String email;
+	private String privateKey;
 
-	public UsuarioDTO() {
-	}
-
-	public UsuarioDTO(String nome, String email) {
+	public UsuarioDTO(@NotBlank(message = "{name.not.blank}") String nome,
+			@NotBlank(message = "{email.not.blank}") @Email(message = "{email.not.valid}") String email) {
 		this.nome = nome;
 		this.email = email;
+		
+	}
+	public UsuarioDTO(@NotBlank(message = "{name.not.blank}") String nome,
+			@NotBlank(message = "{email.not.blank}") @Email(message = "{email.not.valid}") String email,
+			String privateKey) {
+		this.nome = nome;
+		this.email = email;
+		this.privateKey = privateKey;
+	}
+
+	public UsuarioDTO() {
 	}
 
 	public String getNome() {
@@ -29,9 +44,12 @@ public class UsuarioDTO {
 		this.email = email;
 	}
 
-	@Override
-	public String toString() {
-		return "CriaUsuarioDTO [nome=" + nome + ", email=" + email + "]";
+	public String getPrivateKey() {
+		return privateKey;
+	}
+
+	public void setPrivateKey(String privateKey) {
+		this.privateKey = privateKey;
 	}
 
 }

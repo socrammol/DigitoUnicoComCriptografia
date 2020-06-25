@@ -10,7 +10,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
+import io.swagger.v3.oas.annotations.media.Schema;
 @Entity
 public class DigitoUnico implements Serializable {
 	/**
@@ -20,7 +20,9 @@ public class DigitoUnico implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	@Schema(required = true, example = "123456")
 	private String inteiro;
+	@Schema(required = true, example = "3")
 	private int multiplicador;
 	private int resultado;
 	@JsonIgnore
