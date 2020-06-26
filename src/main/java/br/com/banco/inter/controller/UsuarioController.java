@@ -16,7 +16,7 @@ public class UsuarioController {
 	UsuarioService usarioSerive;
 	//criação
 	@PostMapping(path = "/criar")
-	private UsuarioModel publi(@Valid @RequestBody UsuarioDTO criarUsuario) {
+	public UsuarioModel create(@Valid @RequestBody UsuarioDTO criarUsuario) {
 		return usarioSerive.criarUsuario(criarUsuario);
 	}
 	//busca

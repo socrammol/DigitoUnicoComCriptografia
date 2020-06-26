@@ -1,6 +1,9 @@
 package br.com.banco.inter.dto;
 
+import javax.validation.constraints.NotBlank;
+
 public class DigitoUnicoDTO {
+	@NotBlank(message = "{inteiro não pode ser nulo ou branco}")
 	private String inteiro;
 	int multiplicador;
 	private Long idUsuario;

@@ -9,20 +9,12 @@ public class UsuarioDTO {
 	@NotBlank(message = "{email não pode ser nulo ou branco}")
 	@Email(message = "{email não esta valido}")
 	private String email;
-	private String privateKey;
 
 	public UsuarioDTO(@NotBlank(message = "{name.not.blank}") String nome,
 			@NotBlank(message = "{email.not.blank}") @Email(message = "{email.not.valid}") String email) {
 		this.nome = nome;
 		this.email = email;
 		
-	}
-	public UsuarioDTO(@NotBlank(message = "{name.not.blank}") String nome,
-			@NotBlank(message = "{email.not.blank}") @Email(message = "{email.not.valid}") String email,
-			String privateKey) {
-		this.nome = nome;
-		this.email = email;
-		this.privateKey = privateKey;
 	}
 
 	public UsuarioDTO() {
@@ -44,12 +36,5 @@ public class UsuarioDTO {
 		this.email = email;
 	}
 
-	public String getPrivateKey() {
-		return privateKey;
-	}
-
-	public void setPrivateKey(String privateKey) {
-		this.privateKey = privateKey;
-	}
 
 }
