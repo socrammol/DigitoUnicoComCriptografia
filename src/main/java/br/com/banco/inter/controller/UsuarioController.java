@@ -3,6 +3,7 @@ package br.com.banco.inter.controller;
 import br.com.banco.inter.dto.UsuarioDTO;
 import br.com.banco.inter.model.UsuarioModel;
 import br.com.banco.inter.service.UsuarioService;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,6 +15,7 @@ public class UsuarioController {
 
 	@Autowired
 	UsuarioService usarioSerive;
+	@Operation(summary = "Api para cadastro e busca de usuario")
 	//criação
 	@PostMapping(path = "/criar")
 	public UsuarioModel create(@Valid @RequestBody UsuarioDTO criarUsuario) {
