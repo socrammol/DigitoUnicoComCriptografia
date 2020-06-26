@@ -10,7 +10,7 @@ import br.com.banco.inter.service.UsuarioService;
 
 @RestController
 @RequestMapping("/criptografia")
-public class Criptografia {
+public class CriptografiaController {
 	@Autowired
 	CriptografiService criptografiServiceteste;
 	@Autowired
@@ -28,7 +28,6 @@ public class Criptografia {
 	@PostMapping(path = "/")
 	public Object DesCrip(@RequestBody CriptografiaDTO crip)  {
 		return usuario.descriptografar(crip);
-		//riptografiServiceteste.isChavesValida(crip.getPublicKey(),crip.getPrivateKey());
 	}
 
 
