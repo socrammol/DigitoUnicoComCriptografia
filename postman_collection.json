@@ -1,0 +1,284 @@
+{
+	"info": {
+		"_postman_id": "edeaf536-3997-4002-a7f6-b350a47e2dc8",
+		"name": "BancoInter",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Usuario",
+			"item": [
+				{
+					"name": "Criação de Usuario",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "019d7825-6279-43a3-ac9d-370f9e6c95f7",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"    pm.test(\"Successful POST request\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);\r",
+									"});\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\":\"\",\r\n    \"email\":\"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/usuario/criar",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuario",
+								"criar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Alterar Usuario",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\":\"mol\",\r\n    \"email\":\"ma@ma\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/usuario/alterar/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuario",
+								"alterar",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "buscar usuario",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e457897a-cde2-4a09-8641-a26682d4825e",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"1\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/usuario/buscar/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuario",
+								"buscar",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar usuario",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/usuario/delete/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuario",
+								"delete",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "DigitoUnico",
+			"item": [
+				{
+					"name": "Calcular",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"inteiro\":\"143a22233\",\r\n    \"multiplicador\":\"2\",\r\n    \"idUsuario\":\"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/digitounico/calcular",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"digitounico",
+								"calcular"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "criptografia",
+			"item": [
+				{
+					"name": "buscar chaves",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/criptografia",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"criptografia"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "criptografia",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "19b88dda-6391-46f5-8465-6b0022eb08ce",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"privateKey\": \"MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCt1KOVK8FfoIlcinq53rjoPUiQIhfi15LPwAc+yp3fIFQY5GuAAy6gISsjbhSqf1ND4+sm6EK2WDSEqyaknX8fKtm3Q2AhKMqX4iwM/G+a0wCbMFHRBtL2vgyUKhV7Fp66suYMx3PYEs5FUM42u634LY36e1bGzC9c3ebEItZjTMxK4hf2SNi3+aw0K07kDjH39gCnurQ42fiIYPoWKFRkwmp/Dyte65J159L2uDPUGL4lebm4R4ybFbRO3pvwY7oCe1jMpUfSGYZVorjmbdD9rTklmPIYsuHCgh2zTx+2+koL5MAXEyU6zkqJBGLtSEwWmBw45KAHZmYzsM7sxsV1AgMBAAECggEABhLyDFpVDXRcmGE2XJxNtb++c1rdns2NkbjSB/2oeo10otIId5ak4G+IRFqqWjLMxAiIxPlEq351h1U7qnDeakZjCSZPi5kTSy9Z/rIrbCuHT+TmVvl4EaseYWb/DSgDL97kbvnhMGGn14A1VHBGae+dkG0S4SttVD9kuuHEv/92NzcA11JorvHy4ZVNAtT//QkIv1aJ71owibKjWjT+ocgAqYpZjptLoZlNcDS4kut4z95Owjy/aSqa0pCE61+yjA6Oh84HVTwI10nRilCeEj3+LLFl0o7RSGKGWCZc+tVJJpTjpwBCNIz/hzIoybuVX8d+Ys5fwFr/oFbUk1WnQQKBgQDf7T0fX3QHWQgT/c22RJ7wI/TCrOHjHTeHeC9H7n4ptQ5lrIzzmm3cLRzItSz7/3C0juYRKa1Yq0YvY9c5RxlU6mWlbs6s2m/8F8gXEUNdE/My84ylrncLCp+pRknHjdOdXQj/DxcMYXmN5i2ANymmpp8No6yhVa24FRvv+sII/QKBgQDGuoSLq0LRqqq9J9AAy+0KmYk0Gcfn7ORpBuVWZHCc2XEeXJGFsLh8uV+a976N8w7qIxV9Hxc5T/LYoVIeeyn8CeAy/aLUu9A2BwDFlzdglsVhVvyXGI4iYLWoOJ+2YMsCGxEp5yDaYSIy4307Qu8flW/7xMGoiLjn4Jk9gGnz2QKBgClYv9F8KYt1yAUQ9xvxnbtPmFEd5POvoGI2MdzBT7BZyxfA/aG5YRGnjsoMkgrRxrjALgD7RhO6RFJZyBK+axH/2dbrF+RYzRaqOXrw6BRWq7A7wjuRdE+onYR/Av6C1JEY7aFS4vmZQf2Og9ZJ2Tn5SCMXlrePf20fELKGBa/tAoGAEZ7qL8QwuYyLdRg5nkh2rTDt9HuwuQTNP+7HmQBw58dz+0Az+wmvYgfBzWjYMZfyo5oWxrBiC8fl/YVYVbGQCHQLuBm7PWelz5SRYfPFij/0ImxnGzKnL68pjE/xAWfVuEsUG4YN6K8iLCb1rLKDp2ZFtqo8jagJ1S2aCNUBEAkCgYEAkovunuDjQbQruQfzLqnBDrNJGWVG7Og4TazgMf9w1x0Hl+lg9MLJDlsAReqiyOtpVB2sMYfH3aq+kruoDRHkO41cn8QzhopPemC95HG8I0JxsjD6Wn7ffCct8T3H25UK5wyWTfdvtEwf09lDGU8ebBhlZfr0UgeF4mGw4EcoKDs=\",\r\n    \"publicKey\": \"MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArdSjlSvBX6CJXIp6ud646D1IkCIX4teSz8AHPsqd3yBUGORrgAMuoCErI24Uqn9TQ+PrJuhCtlg0hKsmpJ1/HyrZt0NgISjKl+IsDPxvmtMAmzBR0QbS9r4MlCoVexaeurLmDMdz2BLORVDONrut+C2N+ntWxswvXN3mxCLWY0zMSuIX9kjYt/msNCtO5A4x9/YAp7q0ONn4iGD6FihUZMJqfw8rXuuSdefS9rgz1Bi+JXm5uEeMmxW0Tt6b8GO6AntYzKVH0hmGVaK45m3Q/a05JZjyGLLhwoIds08ftvpKC+TAFxMlOs5KiQRi7UhMFpgcOOSgB2ZmM7DO7MbFdQIDAQAB\",\r\n    \"id\":\"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/criptografia",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"criptografia"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "descriptografar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"privateKey\": \"MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCt1KOVK8FfoIlcinq53rjoPUiQIhfi15LPwAc+yp3fIFQY5GuAAy6gISsjbhSqf1ND4+sm6EK2WDSEqyaknX8fKtm3Q2AhKMqX4iwM/G+a0wCbMFHRBtL2vgyUKhV7Fp66suYMx3PYEs5FUM42u634LY36e1bGzC9c3ebEItZjTMxK4hf2SNi3+aw0K07kDjH39gCnurQ42fiIYPoWKFRkwmp/Dyte65J159L2uDPUGL4lebm4R4ybFbRO3pvwY7oCe1jMpUfSGYZVorjmbdD9rTklmPIYsuHCgh2zTx+2+koL5MAXEyU6zkqJBGLtSEwWmBw45KAHZmYzsM7sxsV1AgMBAAECggEABhLyDFpVDXRcmGE2XJxNtb++c1rdns2NkbjSB/2oeo10otIId5ak4G+IRFqqWjLMxAiIxPlEq351h1U7qnDeakZjCSZPi5kTSy9Z/rIrbCuHT+TmVvl4EaseYWb/DSgDL97kbvnhMGGn14A1VHBGae+dkG0S4SttVD9kuuHEv/92NzcA11JorvHy4ZVNAtT//QkIv1aJ71owibKjWjT+ocgAqYpZjptLoZlNcDS4kut4z95Owjy/aSqa0pCE61+yjA6Oh84HVTwI10nRilCeEj3+LLFl0o7RSGKGWCZc+tVJJpTjpwBCNIz/hzIoybuVX8d+Ys5fwFr/oFbUk1WnQQKBgQDf7T0fX3QHWQgT/c22RJ7wI/TCrOHjHTeHeC9H7n4ptQ5lrIzzmm3cLRzItSz7/3C0juYRKa1Yq0YvY9c5RxlU6mWlbs6s2m/8F8gXEUNdE/My84ylrncLCp+pRknHjdOdXQj/DxcMYXmN5i2ANymmpp8No6yhVa24FRvv+sII/QKBgQDGuoSLq0LRqqq9J9AAy+0KmYk0Gcfn7ORpBuVWZHCc2XEeXJGFsLh8uV+a976N8w7qIxV9Hxc5T/LYoVIeeyn8CeAy/aLUu9A2BwDFlzdglsVhVvyXGI4iYLWoOJ+2YMsCGxEp5yDaYSIy4307Qu8flW/7xMGoiLjn4Jk9gGnz2QKBgClYv9F8KYt1yAUQ9xvxnbtPmFEd5POvoGI2MdzBT7BZyxfA/aG5YRGnjsoMkgrRxrjALgD7RhO6RFJZyBK+axH/2dbrF+RYzRaqOXrw6BRWq7A7wjuRdE+onYR/Av6C1JEY7aFS4vmZQf2Og9ZJ2Tn5SCMXlrePf20fELKGBa/tAoGAEZ7qL8QwuYyLdRg5nkh2rTDt9HuwuQTNP+7HmQBw58dz+0Az+wmvYgfBzWjYMZfyo5oWxrBiC8fl/YVYVbGQCHQLuBm7PWelz5SRYfPFij/0ImxnGzKnL68pjE/xAWfVuEsUG4YN6K8iLCb1rLKDp2ZFtqo8jagJ1S2aCNUBEAkCgYEAkovunuDjQbQruQfzLqnBDrNJGWVG7Og4TazgMf9w1x0Hl+lg9MLJDlsAReqiyOtpVB2sMYfH3aq+kruoDRHkO41cn8QzhopPemC95HG8I0JxsjD6Wn7ffCct8T3H25UK5wyWTfdvtEwf09lDGU8ebBhlZfr0UgeF4mGw4EcoKDs=\",\r\n    \"publicKey\": \"MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArdSjlSvBX6CJXIp6ud646D1IkCIX4teSz8AHPsqd3yBUGORrgAMuoCErI24Uqn9TQ+PrJuhCtlg0hKsmpJ1/HyrZt0NgISjKl+IsDPxvmtMAmzBR0QbS9r4MlCoVexaeurLmDMdz2BLORVDONrut+C2N+ntWxswvXN3mxCLWY0zMSuIX9kjYt/msNCtO5A4x9/YAp7q0ONn4iGD6FihUZMJqfw8rXuuSdefS9rgz1Bi+JXm5uEeMmxW0Tt6b8GO6AntYzKVH0hmGVaK45m3Q/a05JZjyGLLhwoIds08ftvpKC+TAFxMlOs5KiQRi7UhMFpgcOOSgB2ZmM7DO7MbFdQIDAQAB\",\r\n    \"id\":\"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/criptografia/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"criptografia",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
